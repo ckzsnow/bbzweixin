@@ -103,10 +103,10 @@
 				display: block;
 			}
 			.mui-page .mui-table-view:first-child {
-				margin-top: 15px;
+				margin-top: 0px;
 			}
 			.mui-page .mui-table-view:last-child {
-				margin-bottom: 30px;
+				margin-bottom: 0px;
 			}
 			.mui-table-view {
 				margin-top: 20px;
@@ -246,21 +246,47 @@
 			<div class="mui-page-content">
 				<div class="mui-scroll-wrapper">
 					<div class="mui-scroll">
-						<div class="mui-card" style="margin:10px 5px;height:60px;line-height: 60px;">
-							<div class="mui-pull-left">
-								<p>票据图像</p>
+						<div class="mui-card" style="margin:10px 5px;height:80px;line-height: 80px;">
+							<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="background-color: white;height:70px;margin-top:5px;margin-left: 5px;">
+								<div id="fapiaoluru_image" class="mui-scroll" style="background-color: white;height:70px;">
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+									<img style="width:70px;height:70px;" src="images/industry/caiwu.png"/>
+								</div>
 							</div>
-							<div class="mui-pull-right">
-								<span class="mui-icon iconfont icon-tianjia" style="font-size: 40px;color:#C3C3C6;margin-top:10px;margin-right:10px;"/>
+							<div class="mui-pull-right" style="margin-top:-77px;">
+								<input id="fapiaoluru_addInvoiceImage" type="file" capture="camera" hidefocus='true' style="position: absolute;float:right;width:50px;height:50px;opacity: 0;">
+								<span class="mui-icon iconfont icon-tianjia" style="font-size: 70px;color:#C3C3C6;margin-top:-3px;margin-right:5px;"></span>
 							</div>
 						</div>
-						<div class="mui-card" style="margin:10px 5px;height:60px;line-height: 60px;">
-							<div class="mui-pull-left">
-								<p>票据图像</p>
-							</div>
-							<div class="mui-pull-right">
-								<span class="mui-icon iconfont icon-tianjia" style="font-size: 40px;color:#C3C3C6;margin-top:10px;margin-right:10px;"/>
-							</div>
+						<div class="mui-card" style="margin:10px 5px;">
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell">
+									<div class="mui-pull-left">发票金额</div>
+									<div class="mui-pull-right"><span id="fapiaoluru_amount" style="color:#8f8f94;">0</span></div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-pull-left">发票类型</div>
+									<div class="mui-pull-right"><span id="fapiaoluru_type" style="color:#8f8f94;">请选择</span><span class="mui-icon mui-icon-arrowright" style="font-size: 20px;margin-top:0px;color:#8f8f94;"></span></div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-pull-left">费用日期</div>
+									<div class="mui-pull-right"><span id="fapiaoluru_date" style="color:#8f8f94;">2015-11-16</span><span class="mui-icon mui-icon-arrowright" style="font-size: 20px;margin-top:0px;color:#8f8f94;"></span></div>
+								</li>
+								<li class="mui-table-view-cell">
+									<div class="mui-pull-left">企业名称</div>
+									<div class="mui-pull-right"><span id="fapiaoluru_comapny_name" style="color:#8f8f94;">上海元升财务咨询有限公司</span></div>
+								</li>
+							</ul>
+						</div>
+						<div style="margin-left:5px;margin-right:5px;" id="fapiaoluru_submit">
+							<button class="mui-btn mui-btn-block mui-btn-primary" style="height:50px;padding:0px 0px;"><span style="font-size: 15px;">提交审核</span></button>
 						</div>
 					</div>
 				</div>
@@ -270,6 +296,7 @@
 	<script src="js/mui.min.js "></script>
 	<script src="js/mui.view.js "></script>
 	<script>
+		mui.init();
 		var viewApi = mui('#app').view({
 			defaultPage: '#mainpage'
 		});
@@ -283,6 +310,44 @@
 				oldBack();
 			}
 		};
+		document.getElementById('sliderSegmentedControl').style.width = document.body.offsetWidth - 100 + 'px';
+		//document.getElementById('fapiaoluru_image').style.width = document.body.offsetWidth - 100 + 'px';
+		document.getElementById("fapiaoluru_addInvoiceImage").onchange = function(event) {
+			var files = event.target.files, file;
+			var imgSrc;
+			if (files && files.length > 0) {
+                file = files[0];
+                try {
+                    var URL = window.URL || window.webkitURL;
+                    var imgURL = URL.createObjectURL(file);
+                    imgSrc = imgURL;
+                    URL.revokeObjectURL(imgURL);
+                }
+                catch (e) {
+                    try {
+                        var fileReader = new FileReader();
+                        fileReader.onload = function (event) {
+                            imgSrc = event.target.result;
+                        };
+                        fileReader.readAsDataURL(file);
+                    }
+                    catch (e) {
+                        alert("Neither createObjectURL or FileReader are supported");
+                    }
+                }
+                var imageRootNode = document.getElementById('fapiaoluru_image');
+                if(imageRootNode.innerHTML.indexOf('img') == -1) imageRootNode.innerHTML = '';
+                var imgEle = document.createElement('img');
+                imgEle.style.width = '50px';
+                imgEle.style.height = '50px';
+                imgEle.style.float = 'left';
+                imgEle.style.marginLeft = '5px';
+                imgEle.style.marginTop = '5px';
+                imgEle.setAttribute('src', imgSrc);
+                imageRootNode.appendChild(imgEle);
+                alert(imgSrc);
+            }
+		}
 	</script>
 
 </html>
