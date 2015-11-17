@@ -309,7 +309,7 @@
 	</head>
 
 	<body>
-		
+
 		<div id="app" class="mui-views">
 			<div class="mui-view">
 				<div class="mui-navbar">
@@ -403,21 +403,23 @@
 						<div class="mui-card" style="margin:10px 5px;height:80px;line-height: 80px;">
 							<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="background-color: white;height:70px;margin-top:5px;margin-left: 5px;">
 								<div id="fapiaoluru_image" class="mui-scroll" style="background-color: white;height:70px;">
-									<p style="width:70px;height:70px;">票据图像</p>
+									<p style="margin-top: -5px;margin-left: 10px;">票据图像</p>
 								</div>
 							</div>
 							<div class="mui-pull-right" style="margin-top:-77px;">
-								<input id="fapiaoluru_addInvoiceImage" type="file" capture="camera" hidefocus='true' style="position: absolute;float:right;width:50px;height:50px;opacity: 0;">
+								<input id="fapiaoluru_addInvoiceImage" type="file" capture="camera" accept="image/*" hidefocus='true' style="position: absolute;float:right;width:50px;height:50px;opacity: 0;">
 								<span class="mui-icon iconfont icon-tianjia" style="font-size: 70px;color:#C3C3C6;margin-top:-3px;margin-right:5px;"></span>
 							</div>
 						</div>
 						<div class="mui-card" style="margin:10px 5px;">
 							<ul class="mui-table-view">
 								<li class="mui-table-view-cell" id="fapiaoluru_amount_li">
+									<a class="mui-tab-item" href="#fapiaoluru_amount_input">
 									<div class="mui-pull-left">发票金额</div>
 									<div class="mui-pull-right">
-										<input id="fapiaoluru_amount" style="color:#8f8f94;border: 0px;text-align: right;margin-right:20px;" value='' placeholder="输入发票金额" />
+										<span id="fapiaoluru_amount" style="color:#8f8f94;">0</span><span class="mui-icon mui-icon-arrowright" style="font-size: 20px;margin-top:0px;color:#8f8f94;display:inline-block"></span>
 									</div>
+									</a>
 								</li>
 								<li class="mui-table-view-cell" id="fapiaoluru_type_li">
 									<div class="mui-pull-left">发票类型</div>
@@ -437,6 +439,10 @@
 								</li>
 							</ul>
 						</div>
+						<div style="width:100px;height:100px;">
+							<img id="testDemo" src="" style="width:100%;height:100%;">
+							<img id="testDemo1" src="" style="width:100%;height:100%;">
+						</div>
 						<div style="margin-left:5px;margin-right:5px;" id="fapiaoluru_submit">
 							<button class="mui-btn mui-btn-block mui-btn-primary" style="height:50px;padding:0px 0px;"><span style="font-size: 15px;">提交审核</span></button>
 						</div>
@@ -444,9 +450,17 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div id="fapiaoshenhe" class="mui-page">
-			
+
+		</div>
+		
+		<div id="fapiaoluru_amount_input" class="mui-popover mui-popover-action mui-popover-bottom">
+			<div class="mui-numbox" style="width: 100%;height: 60px;">
+					<button class="mui-numbox-btn-minus" type="button">-</button>
+					<input class="mui-numbox-input" type="number" id="fapiaoluru_amount_input_sub"/>
+					<button class="mui-numbox-btn-plus" type="button">+</button>
+			</div>
 		</div>
 
 	</body>
@@ -454,7 +468,7 @@
 	<script src="js/mui.view.js "></script>
 	<script src="js/mui.picker.min.js"></script>
 	<script src="js/mui.poppicker.js"></script>
-	<script src="js/mui.previewimage.js"></script>
+	<script src="js/mui.previewimage.js?201511172028"></script>
 	<script src="js/mui.zoom.js"></script>
 	<script>
 		mui.init();
@@ -472,47 +486,66 @@
 				oldBack();
 			}
 		};
-		//发票录入部分
+		 //发票录入部分
+		function getImageDataURL(img) {
+			var canvas = document.createElement('canvas');
+			canvas.width = img.width;
+			canvas.height = img.height;
+			var context = canvas.getContext('2d');
+			context.drawImage(img, 0, 0);
+			var dataURL = canvas.toDataURL('image/png');
+			return dataURL;
+		}
+		var imgURL;
 		document.getElementById('sliderSegmentedControl').style.width = document.body.offsetWidth - 100 + 'px';
 		document.getElementById("fapiaoluru_addInvoiceImage").onchange = function(event) {
+			var imageRootNode = document.getElementById('fapiaoluru_image');
+			if (imageRootNode.innerHTML.indexOf('img') == -1) imageRootNode.innerHTML = '';
+			var imgEle = document.createElement('img');
+			imgEle.style.marginLeft = '5px';
+			imgEle.style.borderRadius = '5px';
+			imgEle.style.width = '70px';
+			imgEle.style.height = '70px';
+			imgEle.setAttribute('data-preview-group', '1');
+			imgEle.setAttribute('data-preview-src', '');
+			imageRootNode.appendChild(imgEle);
+			/*imgEle.onload = function() {
+				var dataURL = getImageDataURL(imgEle);
+				imgEle.src = dataURL;
+				document.getElementById("testDemo").src = dataURL;
+			};*/
 			var files = event.target.files,
 				file;
-			var imgSrc;
 			if (files && files.length > 0) {
 				file = files[0];
 				try {
 					var URL = window.URL || window.webkitURL;
-					var imgURL = URL.createObjectURL(file);
-					imgSrc = imgURL;
+					imgURL = URL.createObjectURL(file);
+					imgEle.src = imgURL;
+					document.getElementById("testDemo").src = imgURL;
 					URL.revokeObjectURL(imgURL);
 				} catch (e) {
 					try {
 						var fileReader = new FileReader();
 						fileReader.onload = function(event) {
-							imgSrc = event.target.result;
+							imgEle.src = event.target.result;
 						};
 						fileReader.readAsDataURL(file);
 					} catch (e) {
 						alert("Neither createObjectURL or FileReader are supported");
 					}
 				}
-				var imageRootNode = document.getElementById('fapiaoluru_image');
-				if (imageRootNode.innerHTML.indexOf('img') == -1) imageRootNode.innerHTML = '';
-				var imgEle = document.createElement('img');
-				imgEle.style.width = '70px';
-				imgEle.style.height = '70px';
-				imgEle.src = imgSrc;
-				imgEle.setAttribute('data-preview-src', '');
-				imgEle.setAttribute('data-preview-group', '1');
-				imageRootNode.appendChild(imgEle);
-				alert(imgSrc);
 			}
+			document.getElementById("testDemo1").src = imgURL;
 		}
+		document.getElementById('fapiaoluru_amount_input_sub').onchange = function(event) {
+			document.getElementById('fapiaoluru_amount').innerHTML = event.target.value;
+		};
+		var optionsJson = '{"type":"date"}';
+		var options = JSON.parse(optionsJson);
+		var datePicker = new mui.DtPicker(options);
 		document.getElementById('fapiaoluru_date_li').addEventListener('tap', function() {
-			var optionsJson = '{"type":"date"}';
-			var options = JSON.parse(optionsJson);
-			var picker = new mui.DtPicker(options);
-			picker.show(function(rs) {
+			datePicker.show(function(rs) {
 				document.getElementById('fapiaoluru_date').innerText = rs.text;
 			});
 		}, false);

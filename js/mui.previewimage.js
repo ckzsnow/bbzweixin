@@ -9,7 +9,7 @@
 		this.options = $.extend(true, {
 			id: '__MUI_PREVIEWIMAGE',
 			zoom: true,
-			header: '<span class="mui-preview-indicator mui-pull-left" style="margin:10px 10px;"></span><span id="trashImage" class="mui-icon mui-icon-trash mui-pull-right" style="color:white;margin:10px 10px;"></span>',
+			header: '<span class="mui-preview-indicator mui-pull-left" style="margin:10px 10px;"></span><span id="trashImage" class="mui-icon mui-icon-trash mui-pull-right" style="color:white;margin:10px 10px;font-size:30px;"></span>',
 			footer: ''
 		}, options || {});
 		this.init();
@@ -46,6 +46,8 @@
 		document.getElementById('trashImage').addEventListener('tap', function(event){
 			var imgList = document.getElementById('fapiaoluru_image').childNodes;
 			for(var img in imgList) {
+				alert(imgList[img].src);
+				alert(self.element.src);
 				if(imgList[img].src == self.element.src) {
 					alert(1111);
 				}
