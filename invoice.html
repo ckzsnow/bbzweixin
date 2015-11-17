@@ -441,7 +441,6 @@
 						</div>
 						<div style="width:100px;height:100px;">
 							<img id="testDemo" src="" style="width:100%;height:100%;">
-							<img id="testDemo1" src="" style="width:100%;height:100%;">
 						</div>
 						<div style="margin-left:5px;margin-right:5px;" id="fapiaoluru_submit">
 							<button class="mui-btn mui-btn-block mui-btn-primary" style="height:50px;padding:0px 0px;"><span style="font-size: 15px;">提交审核</span></button>
@@ -497,6 +496,7 @@
 			return dataURL;
 		}
 		var imgURL;
+		var globalURL;
 		document.getElementById('sliderSegmentedControl').style.width = document.body.offsetWidth - 100 + 'px';
 		document.getElementById("fapiaoluru_addInvoiceImage").onchange = function(event) {
 			var imageRootNode = document.getElementById('fapiaoluru_image');
@@ -509,11 +509,11 @@
 			imgEle.setAttribute('data-preview-group', '1');
 			imgEle.setAttribute('data-preview-src', '');
 			imageRootNode.appendChild(imgEle);
-			/*imgEle.onload = function() {
-				var dataURL = getImageDataURL(imgEle);
-				imgEle.src = dataURL;
-				document.getElementById("testDemo").src = dataURL;
-			};*/
+			imgEle.onload = function() {
+				alert(imgURL);
+				document.getElementById("testDemo").src = imgURL;
+				//document.getElementById("testDemo").src = imgEle.src;
+			};
 			var files = event.target.files,
 				file;
 			if (files && files.length > 0) {
@@ -522,7 +522,6 @@
 					var URL = window.URL || window.webkitURL;
 					imgURL = URL.createObjectURL(file);
 					imgEle.src = imgURL;
-					document.getElementById("testDemo").src = imgURL;
 					URL.revokeObjectURL(imgURL);
 				} catch (e) {
 					try {
@@ -536,7 +535,6 @@
 					}
 				}
 			}
-			document.getElementById("testDemo1").src = imgURL;
 		}
 		document.getElementById('fapiaoluru_amount_input_sub').onchange = function(event) {
 			document.getElementById('fapiaoluru_amount').innerHTML = event.target.value;
