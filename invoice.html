@@ -407,7 +407,7 @@
 								</div>
 							</div>
 							<div class="mui-pull-right" style="margin-top:-77px;">
-								<input id="fapiaoluru_addInvoiceImage" type="file" capture="camera" accept="image/*" hidefocus='true' style="position: absolute;float:right;width:50px;height:50px;opacity: 0;">
+								<input id="fapiaoluru_addInvoiceImage" type="file" capture="camera" accept="image/*" multiple hidefocus='true' style="position: absolute;float:right;width:50px;height:50px;opacity: 0;">
 								<span class="mui-icon iconfont icon-tianjia" style="font-size: 70px;color:#C3C3C6;margin-top:-3px;margin-right:5px;"></span>
 							</div>
 						</div>
@@ -438,9 +438,7 @@
 									<div class="mui-pull-right"><span id="fapiaoluru_comapny_name" style="color:#8f8f94;">上海元升财务咨询有限公司</span></div>
 								</li>
 							</ul>
-						</div>
-						<div style="width:100px;height:100px;">
-							<img id="testDemo" src="" style="width:100%;height:100%;">
+						
 						</div>
 						<div style="margin-left:5px;margin-right:5px;" id="fapiaoluru_submit">
 							<button class="mui-btn mui-btn-block mui-btn-primary" style="height:50px;padding:0px 0px;"><span style="font-size: 15px;">提交审核</span></button>
@@ -456,9 +454,9 @@
 		
 		<div id="fapiaoluru_amount_input" class="mui-popover mui-popover-action mui-popover-bottom">
 			<div class="mui-numbox" style="width: 100%;height: 60px;">
-					<button class="mui-numbox-btn-minus" type="button">-</button>
-					<input class="mui-numbox-input" type="number" id="fapiaoluru_amount_input_sub"/>
-					<button class="mui-numbox-btn-plus" type="button">+</button>
+				<button class="mui-numbox-btn-minus" type="button">-</button>
+				<input class="mui-numbox-input" type="number" id="fapiaoluru_amount_input_sub"/>
+				<button class="mui-numbox-btn-plus" type="button">+</button>
 			</div>
 		</div>
 
@@ -467,11 +465,13 @@
 	<script src="js/mui.view.js "></script>
 	<script src="js/mui.picker.min.js"></script>
 	<script src="js/mui.poppicker.js"></script>
-	<script src="js/mui.previewimage.js?201511172028"></script>
+	<script src="js/mui.previewimage.js"></script>
 	<script src="js/mui.zoom.js"></script>
 	<script>
 		mui.init();
-		mui.previewImage();
+		mui.previewImage({isUpload:true});
+		/*mui.initPreviewImage();
+		mui.previewImage({isUpload:false});*/
 		var viewApi = mui('#app').view({
 			defaultPage: '#mainpage'
 		});
@@ -516,12 +516,14 @@
 					var URL = window.URL || window.webkitURL;
 					imgURL = URL.createObjectURL(file);
 					imgEle.src = imgURL;
+					invoiceList[imgURL] = document.getElementById('fapiaoluru_addInvoiceImage').files[0];
 					//URL.revokeObjectURL(imgURL);
 				} catch (e) {
 					try {
 						var fileReader = new FileReader();
 						fileReader.onload = function(event) {
 							imgEle.src = event.target.result;
+							invoiceList[imgEle.src] = document.getElementById('fapiaoluru_addInvoiceImage').files[0];
 						};
 						fileReader.readAsDataURL(file);
 					} catch (e) {
@@ -555,7 +557,11 @@
 			});
 		}, false);
 		document.getElementById('fapiaoluru_submit').addEventListener('tap', function(event) {
-			alert('TODO');
+			/*var mask = mui.createMask(false);
+			mask.show();*/
+			for(var jsonKey in invoiceList) {
+				console.log(jsonKey + "=" + invoiceList[jsonKey]);
+			}
 		}, false);
 	</script>
 

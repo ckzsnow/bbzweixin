@@ -1,3 +1,4 @@
+var invoiceList = {};
 (function($, window) {
 
 	var template = '<div id="{{id}}" class="mui-slider mui-preview-image mui-fullscreen"><div class="mui-preview-header">{{header}}</div><div class="mui-slider-group"></div><div class="mui-preview-footer mui-hidden">{{footer}}</div><div class="mui-preview-loading"><span class="mui-spinner mui-spinner-white"></span></div></div>';
@@ -5,25 +6,28 @@
 	var defaultGroupName = '__DEFAULT';
 	var div = document.createElement('div');
 	var imgId = 0;
-	var PreviewImage = function(options) {
+	var isUpload = false;
+	var previewImage = function(options) {
+		if(options) isUpload = options.isUpload;
 		this.options = $.extend(true, {
 			id: '__MUI_PREVIEWIMAGE',
 			zoom: true,
-			header: '<span class="mui-preview-indicator mui-pull-left" style="margin:10px 10px;"></span><span id="trashImage" class="mui-icon mui-icon-trash mui-pull-right" style="color:white;margin:10px 10px;font-size:30px;"></span>',
+			header: isUpload ? '<span class="mui-preview-indicator mui-pull-left" style="margin:10px 10px;"></span><span id="closeImgPre" class="mui-icon mui-icon-close mui-pull-right" style="color:white;margin:10px 10px;font-size:30px;"></span><span id="trashImage" class="mui-icon mui-icon-trash mui-pull-right" style="color:white;margin:10px 10px;font-size:30px;"></span>' : '<span class="mui-preview-indicator mui-pull-left" style="margin:10px 10px;"></span><span id="closeImgPre" class="mui-icon mui-icon-close mui-pull-right" style="color:white;margin:10px 10px;font-size:30px;"></span>',
 			footer: ''
 		}, options || {});
 		this.init();
 		this.initEvent();
 	};
-	var proto = PreviewImage.prototype;
+	var proto = previewImage.prototype;
 	proto.init = function() {
 		var options = this.options;
 		var el = document.getElementById(this.options.id);
-		if (!el) {
-			div.innerHTML = template.replace(/\{\{id\}\}/g, this.options.id).replace('{{header}}', options.header).replace('{{footer}}', options.footer);
-			document.body.appendChild(div.firstElementChild);
-			el = document.getElementById(this.options.id);
+		if(el) {
+			document.body.removeChild(el);
 		}
+		div.innerHTML = template.replace(/\{\{id\}\}/g, this.options.id).replace('{{header}}', options.header).replace('{{footer}}', options.footer);
+		document.body.appendChild(div.firstElementChild);
+		el = document.getElementById(this.options.id);
 
 		this.element = el;
 		this.scroller = this.element.querySelector($.classSelector('.slider-group'));
@@ -43,15 +47,29 @@
 			self.open(this);
 			return false;
 		});
-		document.getElementById('trashImage').addEventListener('tap', function(event){
-			var imgList = document.getElementById('fapiaoluru_image').childNodes;
-			for(var img in imgList) {
-				alert(imgList[img].src);
-				alert(self.element.src);
-				if(imgList[img].src == self.element.src) {
-					alert(1111);
+		if(isUpload) {
+			document.getElementById('trashImage').addEventListener('tap', function(event){
+				var imgList = document.getElementById('fapiaoluru_image').childNodes;
+				var imgEle = self.element.querySelector('.mui-active img');
+				for(var i=0; i<imgList.length; i++) {
+					if(imgList[i].src == imgEle.src) {
+						if(confirm("您确定要删除当前发票图像吗？")) {
+							document.getElementById('fapiaoluru_image').removeChild(imgList[i]);
+							for(var jsonKey in invoiceList) {
+								if(jsonKey == imgEle.src) {
+									delete invoiceList[jsonKey];
+									break;
+								}
+							}
+							self.close();
+						} 
+						break;
+					}
 				}
-			}
+			}, false);
+		}
+		document.getElementById('closeImgPre').addEventListener('tap', function(event){
+			self.close();
 		}, false);
 		var laterClose = null;
 		var laterCloseEvent = function() {
@@ -389,12 +407,15 @@
 	var previewImageApi = null;
 	$.previewImage = function(options) {
 		if (!previewImageApi) {
-			previewImageApi = new PreviewImage(options);
+			previewImageApi = new previewImage(options);
 		}
 		return previewImageApi;
 	};
 	$.getPreviewImage = function() {
 		return previewImageApi;
+	}
+	$.initPreviewImage = function() {
+		previewImageApi = null;
 	}
 
 })(mui, window);
