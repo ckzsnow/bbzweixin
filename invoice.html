@@ -305,6 +305,16 @@
 				max-width: 100%;
 				height: auto;
 			}
+			.upload-file {
+				position: fixed;
+			    z-index: 998;
+			    top: 0;
+			    right: 0;
+			    bottom: 0;
+			    left: 0;
+			
+			    background-color: rgba(0, 0, 0, .8);
+			}
 		</style>
 	</head>
 
@@ -461,13 +471,51 @@
 		</div>
 
 	</body>
-	<script src="js/mui.min.js "></script>
+	<script src="js/mui.min.js?2211999 "></script>
 	<script src="js/mui.view.js "></script>
 	<script src="js/mui.picker.min.js"></script>
 	<script src="js/mui.poppicker.js"></script>
 	<script src="js/mui.previewimage.js"></script>
 	<script src="js/mui.zoom.js"></script>
 	<script>
+		mui.createUploadMask = function(callback) {
+			var element = document.createElement('div');
+			element.classList.add('upload-file');
+			element.innerHTML = "<meter id='upLoadProgress' style='width:80%;margin:50% 10%;' value='50' max='100'></meter>";
+			element.addEventListener('touchmove', mui.preventDefault);
+			element.addEventListener('tap', function() {
+				mask.close();
+			});
+			var mask = [element];
+			mask._show = false;
+			mask.show = function() {
+				mask._show = true;
+				element.setAttribute('style', 'opacity:1');
+				document.body.appendChild(element);
+				return mask;
+			};
+			mask._remove = function() {
+				if (mask._show) {
+					mask._show = false;
+					element.setAttribute('style', 'opacity:0');
+					mui.later(function() {
+						var body = document.body;
+						element.parentNode === body && body.removeChild(element);
+					}, 350);
+				}
+				return mask;
+			};
+			mask.close = function() {
+				if (callback) {
+					if (callback() !== false) {
+						mask._remove();
+					}
+				} else {
+					mask._remove();
+				}
+			};
+			return mask;
+		};
 		mui.init();
 		mui.previewImage({isUpload:true});
 		/*mui.initPreviewImage();
@@ -557,11 +605,9 @@
 			});
 		}, false);
 		document.getElementById('fapiaoluru_submit').addEventListener('tap', function(event) {
-			/*var mask = mui.createMask(false);
-			mask.show();*/
-			for(var jsonKey in invoiceList) {
-				console.log(jsonKey + "=" + invoiceList[jsonKey]);
-			}
+			var mask = mui.createUploadMask(false);
+			mask.show();
+			document.getElementById('upLoadProgress').value = 20;
 		}, false);
 	</script>
 

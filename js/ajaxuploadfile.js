@@ -19,7 +19,6 @@ function uploadFile(fileList, formData) {
 function cancleUploadFile() {
 	xhr.abort();
 }
-
 function uploadProgress(evt) {
 	if (evt.lengthComputable) {
 		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
@@ -28,19 +27,16 @@ function uploadProgress(evt) {
 		document.getElementById('progressNumber').innerHTML = 'unable to compute';
 	}
 }
-
 //上传成功响应
 function uploadComplete(evt) {
 	//服务断接收完文件返回的结果
 	alert(evt.target.responseText);
 }
-
 //上传失败
 function uploadFailed(evt) {
-		alert("上传失败");
-	}
-	//取消上传
-
+	alert("上传失败");
+}
+//取消上传
 function uploadCanceled(evt) {
 	alert("您取消了本次上传.");
 }
