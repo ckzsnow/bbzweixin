@@ -496,7 +496,6 @@
 			return dataURL;
 		}
 		var imgURL;
-		var globalURL;
 		document.getElementById('sliderSegmentedControl').style.width = document.body.offsetWidth - 100 + 'px';
 		document.getElementById("fapiaoluru_addInvoiceImage").onchange = function(event) {
 			var imageRootNode = document.getElementById('fapiaoluru_image');
@@ -509,11 +508,6 @@
 			imgEle.setAttribute('data-preview-group', '1');
 			imgEle.setAttribute('data-preview-src', '');
 			imageRootNode.appendChild(imgEle);
-			imgEle.onload = function() {
-				alert(imgURL);
-				document.getElementById("testDemo").src = imgURL;
-				//document.getElementById("testDemo").src = imgEle.src;
-			};
 			var files = event.target.files,
 				file;
 			if (files && files.length > 0) {
@@ -522,7 +516,7 @@
 					var URL = window.URL || window.webkitURL;
 					imgURL = URL.createObjectURL(file);
 					imgEle.src = imgURL;
-					URL.revokeObjectURL(imgURL);
+					//URL.revokeObjectURL(imgURL);
 				} catch (e) {
 					try {
 						var fileReader = new FileReader();
