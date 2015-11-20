@@ -307,13 +307,135 @@
 			}
 			.upload-file {
 				position: fixed;
-			    z-index: 998;
-			    top: 0;
-			    right: 0;
-			    bottom: 0;
-			    left: 0;
-			
-			    background-color: rgba(0, 0, 0, .8);
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .8);
+			}
+			.dialog {
+				position: fixed;
+				z-index: 998;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				background-color: rgba(0, 0, 0, .4);
+			}
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 999;
+				margin-top: 60px;
+			}
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				
+				margin: 0;
+			}
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+			.cd-container {
+				width: 100%;
+				background-color: #e9f0f5;
+			}
+			#cd-timeline {
+				position: relative;
+				padding: 10px 0px;
+				margin-bottom: 2em;
+				padding-left: 10px;
+			}
+			#cd-timeline::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 13px;
+				height: 100%;
+				width: 4px;
+				background: #d7e4ed;
+			}
+			.cd-timeline-block {
+				position: relative;
+			}
+			.cd-timeline-block:first-child {
+				margin-top: 0;
+			}
+			.cd-timeline-block:last-child {
+				margin-bottom: 0;
+			}
+			.cd-timeline-img {
+				position: absolute;
+				top: 4px;
+				left: 0;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				background: #75ce66;
+				box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
+			}
+			.cd-timeline-content {
+				position: relative;
+				border-radius: 0.25em;
+				margin: 10px 20px;
+				box-shadow: 0 3px 0 #d7e4ed;
 			}
 		</style>
 	</head>
@@ -338,37 +460,37 @@
 					<div class="mui-scroll">
 						<ul class="mui-table-view mui-grid-view mui-grid-9">
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#fapiaoluru">
+								<a id="piaojuluru_main_menu" href="#fapiaoluru">
 									<span class="mui-icon iconfont icon-shangchuan2"></span>
 									<div class="mui-media-body">发票录入</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#fapiaoshenhe">
+								<a id="fapiaoshenhe_main_menu" href="#fapiaoshenhe">
 									<span class="mui-icon iconfont icon-shenhe2"><span class="mui-badge">5</span></span>
 									<div class="mui-media-body">审核发票</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="shenhezhongfapiao_main_menu" href="#shenhezhongfapiao">
 									<span class="mui-icon iconfont icon-daikuanshenhezhong"></span>
 									<div class="mui-media-body">审核中</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="yishenhefapiao_main_menu" href="#yishenhefapiao">
 									<span class="mui-icon iconfont icon-tongguoshenhe"></span>
 									<div class="mui-media-body">已审核</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="quanbufapiao_main_menu" href="#quanbufapiao">
 									<span class="mui-icon iconfont icon-quanbu1"></span>
 									<div class="mui-media-body">全部发票</div>
 								</a>
 							</li>
 							<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-								<a href="#">
+								<a id="fapiaosaixuan_main_menu" href="#fapiaosaixuan">
 									<span class="mui-icon iconfont icon-shaixuan"></span>
 									<div class="mui-media-body">发票筛选</div>
 								</a>
@@ -425,10 +547,10 @@
 							<ul class="mui-table-view">
 								<li class="mui-table-view-cell" id="fapiaoluru_amount_li">
 									<a class="mui-tab-item" href="#fapiaoluru_amount_input">
-									<div class="mui-pull-left">发票金额</div>
-									<div class="mui-pull-right">
-										<span id="fapiaoluru_amount" style="color:#8f8f94;">0</span><span class="mui-icon mui-icon-arrowright" style="font-size: 20px;margin-top:0px;color:#8f8f94;display:inline-block"></span>
-									</div>
+										<div class="mui-pull-left">发票金额</div>
+										<div class="mui-pull-right">
+											<span id="fapiaoluru_amount" style="color:#8f8f94;">0</span><span class="mui-icon mui-icon-arrowright" style="font-size: 20px;margin-top:0px;color:#8f8f94;display:inline-block"></span>
+										</div>
 									</a>
 								</li>
 								<li class="mui-table-view-cell" id="fapiaoluru_type_li">
@@ -448,7 +570,7 @@
 									<div class="mui-pull-right"><span id="fapiaoluru_comapny_name" style="color:#8f8f94;">上海元升财务咨询有限公司</span></div>
 								</li>
 							</ul>
-						
+
 						</div>
 						<div style="margin-left:5px;margin-right:5px;" id="fapiaoluru_submit">
 							<button class="mui-btn mui-btn-block mui-btn-primary" style="height:50px;padding:0px 0px;"><span style="font-size: 15px;">提交审核</span></button>
@@ -457,11 +579,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div id="fapiaoshenhe" class="mui-page">
-
-		</div>
-		
 		<div id="fapiaoluru_amount_input" class="mui-popover mui-popover-action mui-popover-bottom">
 			<div class="mui-numbox" style="width: 100%;height: 60px;">
 				<button class="mui-numbox-btn-minus" type="button">-</button>
@@ -470,145 +587,442 @@
 			</div>
 		</div>
 
+		<div id="fapiaoshenhe" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-right">
+					<span class="mui-icon iconfont icon-fanhui" style="color: black;" />
+				</button>
+				<h1 class="mui-title" style='text-align: center;'>发票审核</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="fapiaoshenhe_pullrefresh">
+						<div style="width:100%;height:45px;line-height: 45px;margin-top:0px;margin-bottom:10px;text-align: center;">
+							暂时没有需要您审批的数据！
+						</div>
+						<div class="mui-loading">
+							<div class="mui-spinner"></div>
+						</div>
+						<div style="width:100%;height:45px;line-height: 45px;margin-top:0px;">
+							<div class="title mui-pull-left" style="margin-top:10px;margin-left: 10px;">待审批(<span id="fapiaoshenhe_neededAuditCount">5</span>)</div>
+							<div class="title mui-pull-right" style="margin-top:10px;margin-right: 10px;">&#65509;<span id="fapiaoshenhe_amountSum">105</span></div>
+						</div>
+						<div style="margin-top:10px;">
+							<div style="background-color: white;border:1px solid #ddd;">
+								<div style="height:60px;line-height: 60px;">
+									<div class="mui-pull-left" style="margin-left:10px;">提交人：<span id="fapiaoshenhe_auditUserName">小明</span></div>
+									<div class="mui-pull-right" style="margin-right:10px;margin-top:10px;">
+										<button class="mui-btn mui-btn-block mui-btn-success" style="height:40px;width:120px;padding:0px 0px;"><span style="font-size: 15px;">全部通过</span></button>
+									</div>
+								</div>
+							</div>
+							<div>
+								<ul id="OA_task_2" class="mui-table-view">
+									<li class="mui-table-view-cell">
+										<div class="mui-slider-left mui-disabled">
+											<a class="mui-btn mui-btn-green">通过</a>
+										</div>
+										<div class="mui-slider-right mui-disabled">
+											<a class="mui-btn mui-btn-red">驳回</a>
+										</div>
+										<div class="mui-slider-handle">
+											<img class="mui-media-object mui-pull-left" data-preview-group='2' data-preview-src='' style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body">
+												<div class="mui-pull-left" style="margin-top:15px;">
+													<h5 style="color:black;">餐饮发票</h5>
+													<p class='mui-ellipsis'>费用日期：<span>2015-11-11</span></p>
+												</div>
+												<div class="mui-pull-right" style="margin-top:35px;">
+													<span style='color:black;'>&#65509;156.78</span>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="shenhezhongfapiao" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-right">
+					<span class="mui-icon iconfont icon-fanhui" style="color: black;" />
+				</button>
+				<h1 class="mui-title" style='text-align: center;'>审核中发票</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="background-color: #e9f0f5;">
+					<div class="mui-scroll" style="background-color: #e9f0f5;">
+						<div style="width:100%;height:45px;line-height: 45px;margin-top:0px;margin-bottom:10px;text-align: center;">
+							暂时没有审核中的发票数据！
+						</div>
+						<div class="mui-loading">
+							<div class="mui-spinner"></div>
+						</div>
+						<div id="cd-timeline" class="cd-container">
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="yishenhefapiao" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-right">
+					<span class="mui-icon iconfont icon-fanhui" style="color: black;" />
+				</button>
+				<h1 class="mui-title" style='text-align: center;'>已审核发票</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="background-color: #e9f0f5;">
+					<div class="mui-scroll" style="background-color: #e9f0f5;">
+						<div style="width:100%;height:45px;line-height: 45px;margin-top:0px;margin-bottom:10px;text-align: center;">
+							暂时没有已审核的发票数据！
+						</div>
+						<div class="mui-loading">
+							<div class="mui-spinner"></div>
+						</div>
+						<div id="cd-timeline" class="cd-container">
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Audit-failure" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: red;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit-failure" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: red;">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="quanbufapiao" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<button type="button" class="mui-left mui-action-back mui-btn mui-btn-link mui-btn-nav mui-pull-right">
+					<span class="mui-icon iconfont icon-fanhui" style="color: black;" />
+				</button>
+				<h1 class="mui-title" style='text-align: center;'>全部发票</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="background-color: #e9f0f5;">
+					<div class="mui-scroll" style="background-color: #e9f0f5;">
+						<div id="cd-timeline" class="cd-container">
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Audit-failure" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: red;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:5px;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Audit-failure" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: red;">
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="cd-timeline-block">
+								<div class="cd-timeline-img"></div>
+								<div style="margin-left:20px;">2015-11-19</div>
+								<div class="cd-timeline-content">
+									<ul class="mui-table-view">
+										<li class="mui-table-view-cell">
+											<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+											<div class="mui-media-body mui-pull-left">
+												<div>
+													<p>&#65509;156.78</p>
+													<h5>餐饮发票</h5>
+													<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+												</div>
+											</div>
+											<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+										<li class="mui-table-view-cell">
+												<img class="mui-media-object mui-pull-left" style="width:60px;height:60px;max-width:60px;border-radius: 5px;" src="images/shuijiao.jpg">
+												<div class="mui-media-body mui-pull-left">
+													<div>
+														<p>&#65509;156.78</p>
+														<h5>餐饮发票</h5>
+														<p class='mui-ellipsis'>审核人：<span>管理员</span></p>
+													</div>
+												</div>
+												<span class="mui-pull-right mui-icon iconfont icon-Through-audit" style="width:60px;height:50px;max-width:60px;font-size:50px;margin-top:15px;margin-right:10px;color: green;">
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="fapiaosaixuan" class="mui-page">
+			<div class="mui-navbar-inner mui-bar mui-bar-nav">
+				<div class="mui-pull-right">
+					<button type="button" class="mui-action-back mui-btn  mui-btn-link mui-btn-nav">
+						<span class="mui-icon iconfont icon-fanhui" style="color: black;" />
+					</button>
+					<span id="fapiaosaixuan_search_click" class="mui-icon mui-icon-search" style="color: black;margin-left:10px;"/>
+				</div>
+				<h1 class="mui-title" style='text-align: center;'>发票筛选</h1>
+			</div>
+			<div class="mui-page-content">
+				<div class="mui-scroll-wrapper" style="background-color: white;">
+					<div class="mui-scroll" style="background-color: white;">
+						<div class="mui-card" style="margin:10px 5px;border:1px solid #D9D9D9;">
+							<div style="margin:5px 5px;">
+								<p>费用提交日期</p>
+							</div>
+							<hr/>
+							<div>
+								<div id="fapiaosaixuan_start_date_click" class="mui-pull-left" style='text-align:center;width:40%;height:25px;line-height:25px;margin:0px 2%;margin-bottom:10px;border:1px solid #D9D9D9;background-color: none;border-radius: 10px;'>
+									<p id="fapiaosaixuan_start_date">2015-11-01</p>
+								</div>
+								<div class="mui-pull-left" style="width:12%;height:25px;line-height:25px;text-align: center;">
+									<p>至</p>
+								</div>
+								<div id="fapiaosaixuan_end_date_click" class="mui-pull-right" style='text-align:center;width:40%;height:25px;line-height:25px;margin:0px 2%;margin-bottom:10px;border:1px solid #D9D9D9;background-color: white;border-radius: 10px;'>
+									<p id="fapiaosaixuan_end_date">2015-11-20</p>
+								</div>
+							</div>
+						</div>
+						<div class="mui-card" style="margin:10px 5px;border:1px solid #D9D9D9;">
+							<div style="margin:5px 5px;">
+								<p>发票类别</p>
+							</div>
+							<hr/>
+							<div id="fapiaosaixuan_type_click">
+								<div class="mui-pull-left" style='text-align:left;width:80%;height:25px;line-height:25px;margin:0px 2%;margin-bottom:10px;'>
+									<p id="fapiaosaixuan_type" style="font-size: 15px;">全部</p>
+								</div>
+								<div class="mui-pull-right" style='text-align:right;width:12%;height:25px;line-height:25px;margin:0px 2%;margin-bottom:10px;'>
+									<span class="mui-icon mui-icon-arrowright" style="font-size: 25px;margin-top:0px;color:#8f8f94;display:inline-block"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</body>
-	<script src="js/mui.min.js?2211999 "></script>
+	<script src="js/mui.min.js"></script>
+	<script src="js/mui.pullToRefresh.js"></script>
+	<script src="js/mui.pullToRefresh.material.js"></script>
 	<script src="js/mui.view.js "></script>
 	<script src="js/mui.picker.min.js"></script>
 	<script src="js/mui.poppicker.js"></script>
-	<script src="js/mui.previewimage.js"></script>
+	<script src="js/mui.previewimage.js?201"></script>
 	<script src="js/mui.zoom.js"></script>
-	<script>
-		mui.createUploadMask = function(callback) {
-			var element = document.createElement('div');
-			element.classList.add('upload-file');
-			element.innerHTML = "<meter id='upLoadProgress' style='width:80%;margin:50% 10%;' value='50' max='100'></meter>";
-			element.addEventListener('touchmove', mui.preventDefault);
-			element.addEventListener('tap', function() {
-				mask.close();
-			});
-			var mask = [element];
-			mask._show = false;
-			mask.show = function() {
-				mask._show = true;
-				element.setAttribute('style', 'opacity:1');
-				document.body.appendChild(element);
-				return mask;
-			};
-			mask._remove = function() {
-				if (mask._show) {
-					mask._show = false;
-					element.setAttribute('style', 'opacity:0');
-					mui.later(function() {
-						var body = document.body;
-						element.parentNode === body && body.removeChild(element);
-					}, 350);
-				}
-				return mask;
-			};
-			mask.close = function() {
-				if (callback) {
-					if (callback() !== false) {
-						mask._remove();
-					}
-				} else {
-					mask._remove();
-				}
-			};
-			return mask;
-		};
-		mui.init();
-		mui.previewImage({isUpload:true});
-		/*mui.initPreviewImage();
-		mui.previewImage({isUpload:false});*/
-		var viewApi = mui('#app').view({
-			defaultPage: '#mainpage'
-		});
-		mui('.mui-scroll-wrapper').scroll();
-		var view = viewApi.view;
-		var oldBack = mui.back;
-		mui.back = function() {
-			if (viewApi.canBack()) { //如果view可以后退，则执行view的后退
-				viewApi.back();
-			} else { //执行webview后退
-				oldBack();
-			}
-		};
-		 //发票录入部分
-		function getImageDataURL(img) {
-			var canvas = document.createElement('canvas');
-			canvas.width = img.width;
-			canvas.height = img.height;
-			var context = canvas.getContext('2d');
-			context.drawImage(img, 0, 0);
-			var dataURL = canvas.toDataURL('image/png');
-			return dataURL;
-		}
-		var imgURL;
-		document.getElementById('sliderSegmentedControl').style.width = document.body.offsetWidth - 100 + 'px';
-		document.getElementById("fapiaoluru_addInvoiceImage").onchange = function(event) {
-			var imageRootNode = document.getElementById('fapiaoluru_image');
-			if (imageRootNode.innerHTML.indexOf('img') == -1) imageRootNode.innerHTML = '';
-			var imgEle = document.createElement('img');
-			imgEle.style.marginLeft = '5px';
-			imgEle.style.borderRadius = '5px';
-			imgEle.style.width = '70px';
-			imgEle.style.height = '70px';
-			imgEle.setAttribute('data-preview-group', '1');
-			imgEle.setAttribute('data-preview-src', '');
-			imageRootNode.appendChild(imgEle);
-			var files = event.target.files,
-				file;
-			if (files && files.length > 0) {
-				file = files[0];
-				try {
-					var URL = window.URL || window.webkitURL;
-					imgURL = URL.createObjectURL(file);
-					imgEle.src = imgURL;
-					invoiceList[imgURL] = document.getElementById('fapiaoluru_addInvoiceImage').files[0];
-					//URL.revokeObjectURL(imgURL);
-				} catch (e) {
-					try {
-						var fileReader = new FileReader();
-						fileReader.onload = function(event) {
-							imgEle.src = event.target.result;
-							invoiceList[imgEle.src] = document.getElementById('fapiaoluru_addInvoiceImage').files[0];
-						};
-						fileReader.readAsDataURL(file);
-					} catch (e) {
-						alert("Neither createObjectURL or FileReader are supported");
-					}
-				}
-			}
-		}
-		document.getElementById('fapiaoluru_amount_input_sub').onchange = function(event) {
-			document.getElementById('fapiaoluru_amount').innerHTML = event.target.value;
-		};
-		var optionsJson = '{"type":"date"}';
-		var options = JSON.parse(optionsJson);
-		var datePicker = new mui.DtPicker(options);
-		document.getElementById('fapiaoluru_date_li').addEventListener('tap', function() {
-			datePicker.show(function(rs) {
-				document.getElementById('fapiaoluru_date').innerText = rs.text;
-			});
-		}, false);
-		var invoiceTypePicker = new mui.PopPicker();
-		invoiceTypePicker.setData([{
-			value: 'ywj',
-			text: '董事长 叶文洁'
-		}, {
-			value: 'aaa',
-			text: '总经理 艾AA'
-		}]);
-		document.getElementById('fapiaoluru_type_li').addEventListener('tap', function(event) {
-			invoiceTypePicker.show(function(items) {
-				document.getElementById('fapiaoluru_type').innerText = items[0].text;
-			});
-		}, false);
-		document.getElementById('fapiaoluru_submit').addEventListener('tap', function(event) {
-			var mask = mui.createUploadMask(false);
-			mask.show();
-			document.getElementById('upLoadProgress').value = 20;
-		}, false);
-	</script>
+	<script src="js/invoice.js?201"></script>
 
 </html>

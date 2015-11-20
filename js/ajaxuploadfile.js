@@ -1,30 +1,28 @@
 var xhr = new XMLHttpRequest();
-
-function uploadFile(fileList, formData) {
+function uploadFile(fileList, formData, uploadProgress, successCallBack, failedCallBack) {
 	var fd = new FormData();
 	for (var jsonKey in formData) {
 		fd.append(jsonKey, formData[jsonKey]);
 	}
-	fd.append("fileName", document.getElementById('fileName').files[0]);
-
+	var fileIndex = 0;
+	for (var jsonKey in invoiceList) {
+		fd.append("file" + fileIndex, invoiceList[jsonKey]);
+		fileIndex++;
+	}
 	xhr.upload.addEventListener("progress", uploadProgress, false);
-	xhr.addEventListener("load", uploadComplete, false);
-	xhr.addEventListener("error", uploadFailed, false);
+	xhr.addEventListener("load", successCallBack, false);
+	xhr.addEventListener("error", failedCallBack, false);
 	xhr.addEventListener("abort", uploadCanceled, false);
-
 	xhr.open("POST", "/user/uploadifyTest_doUpload");
 	xhr.send(fd);
 }
-
 function cancleUploadFile() {
 	xhr.abort();
 }
 function uploadProgress(evt) {
 	if (evt.lengthComputable) {
-		var percentComplete = Math.round(evt.loaded * 100 / evt.total);
-		document.getElementById('progressNumber').innerHTML = percentComplete.toString() + '%';
-	} else {
-		document.getElementById('progressNumber').innerHTML = 'unable to compute';
+		var percentComplete = Math.round(evt.loaded * 100 / evt.total) * 100;
+		document.getElementById('upLoadProgress').value = percentComplete;
 	}
 }
 //上传成功响应

@@ -53,16 +53,21 @@ var invoiceList = {};
 				var imgEle = self.element.querySelector('.mui-active img');
 				for(var i=0; i<imgList.length; i++) {
 					if(imgList[i].src == imgEle.src) {
-						if(confirm("您确定要删除当前发票图像吗？")) {
-							document.getElementById('fapiaoluru_image').removeChild(imgList[i]);
-							for(var jsonKey in invoiceList) {
-								if(jsonKey == imgEle.src) {
-									delete invoiceList[jsonKey];
-									break;
+						mui.createConfirmDialog('您确定要删除当前发票图像吗？',
+							function(){
+								self.close();
+							},
+							function(){
+								document.getElementById('fapiaoluru_image').removeChild(imgList[i]);
+								for(var jsonKey in invoiceList) {
+									if(jsonKey == imgEle.src) {
+										delete invoiceList[jsonKey];
+										break;
+									}
 								}
+								self.close();
 							}
-							self.close();
-						} 
+						).show();
 						break;
 					}
 				}
