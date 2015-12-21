@@ -10,21 +10,32 @@ function checkJsonIsEmpty(json) {
 
 mui.createUploadMask = function(callback) {
 	var element = document.createElement('div');
-	element.innerHTML = "<div id='upload_progress'><strong></strong></div>";
+	element.classList.add('upload-file');	
 	element.addEventListener('touchmove', mui.preventDefault);
 	element.addEventListener('tap', function() {
 		//mask.close();
 	});
+	var progressNode = document.createElement('div');
+	progressNode.id="upload_progress";
+	progressNode.setAttribute('class', 'circle');
+	progressNode.innerHTML = "<strong></strong>";
+	element.appendChild(progressNode);
 	var mask = [element];
 	mask._show = false;
 	mask.show = function() {
 		mask._show = true;
 		element.setAttribute('style', 'opacity:1');
+		progressNode.style.marginLeft = window.screen.availWidth/2-50 + "px";
+		progressNode.style.marginTop = window.screen.availHeight/2-50 + "px";
 		document.body.appendChild(element);
 		$('#upload_progress').circleProgress({
-	    	value: 0
-	    }).on('circle-animation-progress', function(event, progress) {
-	        $(this).find('strong').html(parseInt(0 * progress) + '<i>%</i>');
+	    	value: 0,
+	    	emptyFill: 'rgba(74, 197, 248, 1)',
+	    	animation: false,
+	    	fill: { gradient: ["red", "blue", "green"], gradientAngle: Math.PI / 4 }	
+	    }).on('circle_progress_percent', function(event, progress) {
+	        $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+	        $('#upload_progress').circleProgress('value', progress);
 	    });
 		return mask;
 	};
@@ -195,6 +206,12 @@ document.getElementById('fapiaoluru_submit').addEventListener('tap', function(ev
 	}
 	var mask = mui.createUploadMask(false);
 	mask.show();
+	$('#upload_progress').find('strong').html(0 + '<i>%</i>');
+	/*var i = 0.01;
+	setInterval(function(){
+		$('#upload_progress').trigger('circle_progress_percent', [i]);
+		i = i + 0.01;
+	},100);*/
 	var formData = {};
 	var xhr = new XMLHttpRequest();
 	var fd = new FormData();
@@ -208,8 +225,8 @@ document.getElementById('fapiaoluru_submit').addEventListener('tap', function(ev
 	}
 	xhr.upload.addEventListener("progress", function(evt) {
 		if (evt.lengthComputable) {
-			var percentComplete = Math.round(evt.loaded * 100 / evt.total) * 100;
-			document.getElementById('upLoadProgress').value = percentComplete;
+			var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+			$('#upload_progress').trigger('circle_progress_percent', [percentComplete]);
 		}
 	}, false);
 	xhr.addEventListener("load", function(evt) {
