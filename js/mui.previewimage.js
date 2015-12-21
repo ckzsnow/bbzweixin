@@ -49,7 +49,7 @@ var invoiceList = {};
 		});
 		if(isUpload) {
 			document.getElementById('trashImage').addEventListener('tap', function(event){
-				var imgList = document.getElementById('fapiaoluru_image').childNodes;
+				var imgList = $('#invoice_img_list_ul img');
 				var imgEle = self.element.querySelector('.mui-active img');
 				for(var i=0; i<imgList.length; i++) {
 					if(imgList[i].src == imgEle.src) {
@@ -58,12 +58,21 @@ var invoiceList = {};
 								self.close();
 							},
 							function(){
-								document.getElementById('fapiaoluru_image').removeChild(imgList[i]);
+								document.getElementById('invoice_img_list_ul').removeChild(imgList[i].parentNode);
 								for(var jsonKey in invoiceList) {
 									if(jsonKey == imgEle.src) {
 										delete invoiceList[jsonKey];
 										break;
 									}
+								}
+								var isEmpty = true;
+								for (var jsonKey in invoiceList) {
+									isEmpty = false;
+									break;
+								}
+								if(isEmpty) {
+									document.getElementById('tips_image').style.display = '';
+									document.getElementById('invoice_img_list_root_div').style.display = 'none';
 								}
 								self.close();
 							}
