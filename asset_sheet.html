@@ -140,21 +140,81 @@
 								<th>期末余额</th>
 								<th>年初余额</th>
 							</tr>
-							<tr><td style="color:#7D9EC0;font-weight:bold;">流动资产：</td><td></td><td></td></tr>
-						    <tr><td>货币资金</td><td>100%</td><td>Yes</td></tr>
-						    <tr><td>短期投资</td><td>50%</td><td>Yes</td></tr>
-						    <tr><td>应收票据</td><td>0%</td><td>Yes</td></tr>
-						    <tr><td>应收账款</td><td>100%</td><td>Yes</td></tr>
-						    <tr><td style="color:#7D9EC0;font-weight:bold;">流动资产：</td><td></td><td></td></tr>
-						    <tr><td>货币资金</td><td>100%</td><td>Yes</td></tr>
-						    <tr><td>短期投资</td><td>50%</td><td>Yes</td></tr>
-						    <tr><td>应收票据</td><td>0%</td><td>Yes</td></tr>
-						    <tr><td>应收账款</td><td>100%</td><td>Yes</td></tr>
-						    <tr><td style="color:#7D9EC0;font-weight:bold;">流动资产：</td><td></td><td></td></tr>
-						    <tr><td>货币资金</td><td>100%</td><td>Yes</td></tr>
-						    <tr><td>短期投资</td><td>50%</td><td>Yes</td></tr>
-						    <tr><td>应收票据</td><td>0%</td><td>Yes</td></tr>
-						    <tr><td>应收账款</td><td>100%</td><td>Yes</td></tr>
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>货币资金</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>短期投资</td>
+								<td>50%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收票据</td>
+								<td>0%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收账款</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>货币资金</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>短期投资</td>
+								<td>50%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收票据</td>
+								<td>0%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收账款</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>货币资金</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>短期投资</td>
+								<td>50%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收票据</td>
+								<td>0%</td>
+								<td>Yes</td>
+							</tr>
+							<tr>
+								<td>应收账款</td>
+								<td>100%</td>
+								<td>Yes</td>
+							</tr>
 						</table>
 					</div>
 					<div style="margin-left:5px;margin-right: 5px;margin-bottom:100px;">
@@ -173,6 +233,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="scrollToTop" style="position:fixed;bottom: 10px;right:10px;"><a>回到顶部</a></div>
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
@@ -201,6 +262,7 @@
 			$("table tr:nth-child(odd)").addClass("odd-row");
 			$("table td:first-child, table th:first-child").addClass("first");
 			$("table td:last-child, table th:last-child").addClass("last");
+			$(window).bind("scroll resize",function(e){alert(document.body.scrollTop);}
 		});
 	</script>
 
