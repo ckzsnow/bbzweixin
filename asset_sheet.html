@@ -123,7 +123,7 @@
 			<h1 class="mui-title" style='text-align: center;'>资产负债表</h1>
 		</div>
 		<div class="mui-page-content">
-			<div class="mui-scroll-wrapper">
+			<div class="mui-scroll-wrapper" id="mui_main_page1" >
 				<div class="mui-scroll">
 					<div class="mui-card" style="margin-top:55px;margin-left:5px;margin-right:5px;">
 						<ul class="mui-table-view">
@@ -137,103 +137,331 @@
 						<table cellspacing="0">
 							<tr>
 								<th>资产</th>
-								<th>期末余额</th>
-								<th>年初余额</th>
+								<th nowrap="nowrap">期末余额</th>
+								<th nowrap="nowrap">年初余额</th>
 							</tr>
 							<tr>
 								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
-								<td></td>
-								<td></td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
 								<td>货币资金</td>
-								<td>100%</td>
-								<td>Yes</td>
+							<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
 								<td>短期投资</td>
-								<td>50%</td>
-								<td>Yes</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
 								<td>应收票据</td>
-								<td>0%</td>
-								<td>Yes</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
 								<td>应收账款</td>
-								<td>100%</td>
-								<td>Yes</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
+                            	<tr>
+								<td>预付账款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>应收股利</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>应收利息</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>其他应收账款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>存货</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>其中:原材料</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>在产品</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>库存商品</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>周转材料</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>其他流动资产</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td  style="color:#7D9EC0;font-weight:bold;">流动资产合计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+
 							<tr>
-								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
+								<td style="color:#7D9EC0;font-weight:bold;">非流动资产：</td>
 								<td></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td>货币资金</td>
-								<td>100%</td>
-								<td>Yes</td>
+								<td>长期债券投资</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>短期投资</td>
-								<td>50%</td>
-								<td>Yes</td>
+								<td>长期股权投资</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>应收票据</td>
-								<td>0%</td>
-								<td>Yes</td>
+								<td>固定资产原价</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>应收账款</td>
-								<td>100%</td>
-								<td>Yes</td>
+								<td>减：累计折旧</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>固定资产账面价值</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>在建工程</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>工程物资</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>固定资产清理</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>生产性生物资产</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>无形资产</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>开发支出</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>长期待摊费用</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td>其他非流动资产</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">非流动资产合计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            	<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">资产总计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>							
+						</table>
+						<table cellspacing="0">
+							<tr>
+								<th>负债和所有者权益</th>
+								<th nowrap="nowrap">期末余额</th>
+								<th nowrap="nowrap">年初余额</th>
 							</tr>
 							<tr>
-								<td style="color:#7D9EC0;font-weight:bold;">流动资产：</td>
+								<td style="color:#7D9EC0;font-weight:bold;">流动负债：</td>
 								<td></td>
 								<td></td>
 							</tr>
 							<tr>
-								<td>货币资金</td>
-								<td>100%</td>
-								<td>Yes</td>
+								<td>短期借款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>短期投资</td>
-								<td>50%</td>
-								<td>Yes</td>
+								<td>应付票据</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>应收票据</td>
-								<td>0%</td>
-								<td>Yes</td>
+								<td>应付账款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
 							<tr>
-								<td>应收账款</td>
-								<td>100%</td>
-								<td>Yes</td>
+								<td>预收账款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
 							</tr>
+							<tr>
+								<td>应付职工薪酬</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>应交税费</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>应付利息</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>应付利润</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>其他应付款</td>
+							<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>其他流动负债</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">流动负债合计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">非流动负债：</td>
+								<td></td>
+								<td></td>
+							</tr>
+							<tr>
+								<td>长期借款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>长期应付款</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>递延收益</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>其他非流动负债</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>非流动负债合计/td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>负债合计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+                            
+                            
+							<tr>
+								<td style="color:#7D9EC0;font-weight:bold;">所有者权益（或股东权益）：</td>
+								<td></td>
+                                <td></td>
+                                
+							</tr>
+							<tr>
+								<td>实收资本（或股本）</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>资本公积</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>盈余公积</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>未分配利润</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>所有者权益（或股东权益）合计</td>
+								<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>
+							<tr>
+								<td>负债和所有者权益（或股东权益）总计</td>
+							<td id="monetary_resources_ending_balance"></td>
+								<td id="monetary_resources_beginning_balance" ></td>
+							</tr>						
 						</table>
 					</div>
 					<div style="margin-left:5px;margin-right: 5px;margin-bottom:100px;">
 						<div style="display:inline;">
-							<h5 style="width:50%;float:left;">制表人：<span>柴快长</span></h5>
-							<h5 style="width:50%;float:left;">编制单位：<span>柴快长</span></h5>
+							<h5 style="width:50%;float:left;">制表人：<span id="tabulator"></span></h5>
+							<h5 style="width:50%;float:left;">编制单位：<span id="preparedby1"></span></h5>
 						</div>
 						<div style="display:inline;">
-							<h5 style="width:50%;float:left;">财务负责人：<span>柴快长</span></h5>
-							<h5 style="width:50%;float:left;">企业负责人：<span>柴快长</span></h5>
+							<h5 style="width:50%;float:left;">财务负责人：<span id="finance_chief"></span></h5>
+							<h5 style="width:50%;float:left;">企业负责人：<span id="company_controller"></span></h5>
 						</div>
 						<div style="display:inline;">
 							<h5 style="width:50%;float:left;">表中数字单位：<span>元</span></h5>
-							<h5 style="width:50%;float:left;">表中数字截止日期：<span>柴快长</span></h5>
+							<h5 style="width:50%;float:left;">表中数字截止日期：<span id="expiry_date" ></span></h5>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div id="scrollToTop" style="position:fixed;bottom: 10px;right:10px;"><a>回到顶部</a></div>
+			<div id="scrollToTop" style="position:fixed;bottom: 75px;right:5px;z-index:9999999999;"><img class="scroll_to_top" style="width:25px;" src="images/scroll_top.png"></div>
+			<div id="scrollToBottom" style="position:fixed;bottom: 50px;right:5px;z-index:9999999999;"><img class="scroll_to_bottom" style="width:25px;" src="images/scroll_bottom.png"></div>
 		</div>
 	</body>
 	<script src="js/mui.min.js"></script>
@@ -254,6 +482,7 @@
 					picker.show(function(rs) {
 						result.innerText = rs.text;
 						picker.dispose();
+						getAssetSheetData(result.innerText);
 					});
 				}, false);
 			});
@@ -262,8 +491,13 @@
 			$("table tr:nth-child(odd)").addClass("odd-row");
 			$("table td:first-child, table th:first-child").addClass("first");
 			$("table td:last-child, table th:last-child").addClass("last");
-			$(window).bind("scroll resize",function(e){alert(document.body.scrollTop);}
 		});
+		mui("#scrollToTop").on("tap", ".scroll_to_top", function(){
+			mui('#mui_main_page1').scroll().scrollTo(0, 0);
+		});
+		mui("#scrollToBottom").on("tap", ".scroll_to_bottom", function(){			
+			mui('#mui_main_page1').scroll().scrollToBottom();
+		})
 	</script>
 
 </html>
